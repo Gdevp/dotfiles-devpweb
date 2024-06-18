@@ -74,7 +74,7 @@ set incsearch                   " incremental searching
 set ignorecase                  " searches are case insensitive...
 set smartcase                   " ... unless they contain at least one capital letter
 
-" =============================================================================================================
+" ============================================================================================================
 
 lua << END
 --require('transparent').clear_prefix('lualine')
@@ -94,7 +94,7 @@ lua << END
 --})
 
 -- require('bufferline').setup{}
-
+require('gitsigns').setup()
 require('lualine').setup({
 options = {
     --theme = "nord",
@@ -117,7 +117,10 @@ require('nvim-treesitter.configs').setup {
         'css',
         'json',
         'python',
-        'lua'
+        'lua',
+        "vim", 
+        "vimdoc", 
+        "query"
     },
     highlight = {
         enable = true, -- Activar el resaltado de Tree-sitter
