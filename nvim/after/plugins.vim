@@ -23,6 +23,8 @@ call plug#begin("~/.config/nvim/plugged")
   Plug 'lmburns/kimbox'
   Plug 'EdenEast/nightfox.nvim' 
   Plug 'jiangmiao/auto-pairs'
+  Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
+  Plug 'stevearc/dressing.nvim'
   Plug 'honza/vim-snippets'
   Plug 'preservim/nerdtree'
   Plug 'tpope/vim-fugitive'

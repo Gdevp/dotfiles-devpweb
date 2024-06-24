@@ -31,6 +31,7 @@ noremap <S-N> <Plug>(multicursor-prior)
 " Find files using Telescope command-line sugar - lua functions.
 nnoremap <leader>pf <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <C-g> <cmd>lua require('telescope.builtin').git_grep()<cr>
+nnoremap <leader>bb <cmd>Telescope buffers<cr>
 
 " Configuración para NERDTree
 let g:NERDTreeShowHidden=1
@@ -50,6 +51,9 @@ nnoremap <leader>f :FZF<CR>
 " Abrir terminal con Ctrl+e
 " Uso zsh en lugar de bash
 nnoremap <c-e> :call OpenTerminal()<CR>
+
+" Asignación de teclas para abrir la terminal flotante"
+map <Leader>zt :call OpenTerminalFlotante()<CR>
 
 " vim . redirect
 nnoremap <leader>pv :Ex<CR>
@@ -82,3 +86,13 @@ nnoremap <C-m> :bnext<CR>  " Cambiar al siguiente archivo
 
 " Configuración de atajo de teclado para abrir NERDTree
 " nnoremap <C-q> :NERDTreeToggle<CR>
+
+" Mapea la función prompt_for_input a un atajo de teclado
+nnoremap <leader>i :lua prompt_for_input()<CR>
+
+" Mapea la función prompt_for_selection a un atajo de teclado
+nnoremap <leader>s :lua prompt_for_selection()<CR>
+
+" Mapea la función de renombrado a un atajo de teclado
+nnoremap <leader>rn :lua lsp_rename()<CR>
+

@@ -5,13 +5,23 @@
 "augroup END
 
 " start terminal in insert mode
-au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+"au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+"
+"" Abrir terminal y uso zsh en lugar de bash
+"function! OpenTerminal()
+"  split term://zsh
+"  resize 10
+"endfunction
 
-" Abrir terminal y uso zsh en lugar de bash
-function! OpenTerminal()
-  split term://zsh
-  resize 10
-endfunction
+" set
+autocmd TermEnter term://*toggleterm#*
+      \ tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+
+" By applying the mappings this way you can pass a count to your
+" mapping to open a specific window.
+" For example: 2<C-t> will open terminal 2
+nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
 
 " configs Ale
 let g:ale_linters = {

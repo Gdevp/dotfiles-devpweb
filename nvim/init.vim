@@ -95,6 +95,49 @@ lua << END
 
 -- require('bufferline').setup{}
 require('gitsigns').setup()
+require("toggleterm").setup()
+require('dressing').setup({
+  input = {
+    win_options = {
+      winhighlight = 'NormalFloat:DiagnosticError',
+    }
+  }, 
+  select = {
+    backend = { 'telescope', 'builtin' },
+    telescope = require('telescope.themes').get_cursor(),
+  },
+})
+
+function _G.prompt_for_input()
+  local input = vim.fn.input('Enter something: ')
+  print('You entered: ' .. input)
+end
+
+function _G.prompt_for_selection()
+  local options = { 'Option 1', 'Option 2', 'Option 3' }
+  vim.ui.select(options, {
+    prompt = 'Select an option:',
+  }, function(choice)
+    if choice then
+      print('You selected: ' .. choice)
+    else
+      print('You canceled the selection')
+    end
+  end)
+end
+
+--Define la función de renombrado LSP usando dressing.nvim
+function _G.lsp_rename()
+  local curr_name = vim.fn.expand('<cword>')
+  vim.ui.input({ prompt = 'Rename to: ', default = curr_name }, function(new_name)
+    if not new_name or #new_name == 0 then
+      return
+    end
+    vim.lsp.buf.rename(new_name)
+  end)
+end
+
+
 require('lualine').setup({
 options = {
     --theme = "nord",
@@ -108,7 +151,7 @@ options = {
   },
 })
 
-require('telescope').setup()
+require('telescope').setup({})
 require('nvim-autopairs').setup()
 require('nvim-treesitter.configs').setup {
     ensure_installed = { 
@@ -120,7 +163,8 @@ require('nvim-treesitter.configs').setup {
         'lua',
         "vim", 
         "vimdoc", 
-        "query"
+        "query",
+        "php"
     },
     highlight = {
         enable = true, -- Activar el resaltado de Tree-sitter
