@@ -108,36 +108,6 @@ require('dressing').setup({
   },
 })
 
-function _G.prompt_for_input()
-  local input = vim.fn.input('Enter something: ')
-  print('You entered: ' .. input)
-end
-
-function _G.prompt_for_selection()
-  local options = { 'Option 1', 'Option 2', 'Option 3' }
-  vim.ui.select(options, {
-    prompt = 'Select an option:',
-  }, function(choice)
-    if choice then
-      print('You selected: ' .. choice)
-    else
-      print('You canceled the selection')
-    end
-  end)
-end
-
---Define la función de renombrado LSP usando dressing.nvim
-function _G.lsp_rename()
-  local curr_name = vim.fn.expand('<cword>')
-  vim.ui.input({ prompt = 'Rename to: ', default = curr_name }, function(new_name)
-    if not new_name or #new_name == 0 then
-      return
-    end
-    vim.lsp.buf.rename(new_name)
-  end)
-end
-
-
 require('lualine').setup({
 options = {
     --theme = "nord",
@@ -159,9 +129,8 @@ require('nvim-treesitter.configs').setup {
         'typescript',
         'css',
         'json',
-        'python',
         'lua',
-        "vim", 
+        "vim",
         "vimdoc", 
         "query",
         "php"
@@ -208,8 +177,6 @@ require("mason-null-ls").setup({
 require('lint').linters_by_ft = {
   javascript = {'eslint_d'},
   typescript = {'eslint_d'},
-  python = {'pylint'}
-
 }
 
 vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter", "InsertLeave", "TextChanged" }, {
@@ -227,6 +194,16 @@ require("neo-tree").setup({
 })
 
 
+--Define la función de renombrado LSP usando dressing.nvim
+function _G.lsp_rename()
+  local curr_name = vim.fn.expand('<cword>')
+  vim.ui.input({ prompt = 'Rename to: ', default = curr_name }, function(new_name)
+    if not new_name or #new_name == 0 then
+      return
+    end
+    vim.lsp.buf.rename(new_name)
+  end)
+end
 
 require('vscode').setup({
     -- Enable italic comment

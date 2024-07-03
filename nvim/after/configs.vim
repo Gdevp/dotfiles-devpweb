@@ -24,18 +24,18 @@ nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
 inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
 
 " configs Ale
-let g:ale_linters = {
-\   'cpp': ['clang', 'gcc'],
-\}
-let g:ale_fixers = {
-\   'javascript': ['prettier'],
-\   'css': ['prettier'],
-\   'cpp': ['clang-format', 'clang-tidy'],
-\}
-let g:ale_cpp_clangformat_executable = 'clang-format'
-let g:ale_cpp_clangformat_options = '--style=Google'
-let g:ale_fix_on_save = 1
-let g:ale_linters_explicit = 1 
+" let g:ale_linters = {
+" \   'cpp': ['clang', 'gcc'],
+" \}
+" let g:ale_fixers = {
+" \   'javascript': ['prettier'],
+" \   'css': ['prettier'],
+" \   'cpp': ['clang-format', 'clang-tidy'],
+" \}
+" let g:ale_cpp_clangformat_executable = 'clang-format'
+" let g:ale_cpp_clangformat_options = '--style=Google'
+" let g:ale_fix_on_save = 1
+" let g:ale_linters_explicit = 1 
 " =================================================================================================================================
 " Configuraciones de autocierre, autocompletado y formato
 " =================================================================================================================================

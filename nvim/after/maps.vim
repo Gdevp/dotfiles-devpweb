@@ -30,6 +30,7 @@ noremap <S-N> <Plug>(multicursor-prior)
 
 " Find files using Telescope command-line sugar - lua functions.
 nnoremap <leader>pf <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>l <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <C-g> <cmd>lua require('telescope.builtin').git_grep()<cr>
 nnoremap <leader>bb <cmd>Telescope buffers<cr>
 
