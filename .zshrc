@@ -50,12 +50,12 @@ alias ls="eza --icons=always"
 eval "$(fzf --zsh)"
 
 # --- setup fzf theme ---
-fg="#CBE0F0"
-bg="#011628"
-bg_highlight="#143652"
-purple="#B388FF"
-blue="#06BCE4"
-cyan="#2CF9ED"
+#fg="#CBE0F0"
+#bg="#011628"
+#bg_highlight="#143652"
+#purple="#B388FF"
+#blue="#06BCE4"
+#cyan="#2CF9ED"
 
 export FZF_DEFAULT_OPTS="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${bg_highlight},hl+:${purple},info:${blue},prompt:${cyan},pointer:${cyan},marker:${cyan},spinner:${cyan},header:${cyan}"
 
@@ -97,7 +97,9 @@ _fzf_comprun() {
 }
 
 # ----- Bat (better cat) -----
-export BAT_THEME=tokyonight_night
+# export BAT_THEME=tokyonight_night
+export BAT_THEME=visual_studio_dark
+
 
 # ---- TheFuck -----
 # thefuck alias
@@ -114,9 +116,27 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 export PATH="$HOME/.composer/vendor/bin:$PATH" # Añadir PHP-CS-Fixer a PATH
+export PATH="$HOME/.config/nvim-linux64/bin:$PATH"
+export PATH="/usr/local/go/bin:$PATH"
 
 # Añadir soporte para formateadores
 export PATH="$HOME/.npm-global/bin:$PATH" # Añadir Prettier a PATH
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/giancarlo/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/giancarlo/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/giancarlo/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/giancarlo/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
